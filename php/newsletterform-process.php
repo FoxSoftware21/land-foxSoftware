@@ -1,6 +1,10 @@
 <?php
 $errorMSG = "";
 
+$tipo = $_POST["tipo"];
+$nome = $_POST["nome"];
+$tel = $_POST["tel"];
+
 if (empty($_POST["email"])) {
     $errorMSG = "Email is required ";
 } else {
@@ -13,11 +17,15 @@ if (empty($_POST["terms"])) {
     $terms = $_POST["terms"];
 }
 
-$EmailTo = "yourname@domain.com";
-$Subject = "New newsletter subscription from Tivo landing page";
+$EmailTo = "foxsoftware21@gmail.com";
+$Subject = $tipo;
 
 // prepare email body text
 $Body = "";
+$Body .= "Nome: ";
+$Body .= $nome;
+$Body .= "Celular: ";
+$Body .= $tel;
 $Body .= "Email: ";
 $Body .= $email;
 $Body .= "\n";
@@ -33,7 +41,7 @@ if ($success && $errorMSG == ""){
    echo "success";
 }else{
     if($errorMSG == ""){
-        echo "Something went wrong :(";
+        echo "Algo deu errado :(";
     } else {
         echo $errorMSG;
     }
